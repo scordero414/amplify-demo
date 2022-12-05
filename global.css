@@ -4,6 +4,20 @@ body {
   margin: 0;
 }
 @font-face {
+  font-family: 'AvenirBold';
+  src: url('/fonts/AvenirNextLTPro-Bold.otf');
+  format: ('otf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AvenirRegular';
+  src: url('/fonts/AvenirNextLTPro-Regular.otf');
+  format: ('otf');
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'ZenDots';
   src: url('/fonts/ZenDots-Regular.ttf');
   format: ('ttf');
