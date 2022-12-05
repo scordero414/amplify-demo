@@ -1,7 +1,7 @@
-import { createTheme, defaultDarkModeOverride } from "@aws-amplify/ui-react";
+import { createTheme, defaultDarkModeOverride } from '@aws-amplify/ui-react';
 
-export const theme = createTheme({
-  name: "my-theme",
+const baseTheme = createTheme({
+  name: 'my-base-theme',
   tokens: {
     fonts: {
       default: {
@@ -12,3 +12,21 @@ export const theme = createTheme({
   },
   overrides: [defaultDarkModeOverride],
 });
+
+export const theme = createTheme(
+  {
+    name: 'my-theme',
+    tokens: {
+      components: {
+        fileuploader: {
+          ...baseTheme.tokens.components.fileuploader,
+          dropzone: {
+            ...baseTheme.tokens.components.fileuploader.dropzone,
+            backgroundColor: 'red',
+          },
+        },
+      },
+    },
+  },
+  baseTheme
+);

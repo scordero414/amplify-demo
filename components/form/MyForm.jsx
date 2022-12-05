@@ -1,7 +1,6 @@
-/* eslint-disable */
-import * as React from "react";
-import { fetchByPath, validateField } from "./utils";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import * as React from 'react';
+import { fetchByPath, validateField } from './utils';
+import { getOverrideProps } from '@aws-amplify/ui-react/internal';
 import {
   Button,
   Flex,
@@ -10,7 +9,9 @@ import {
   RadioGroupField,
   TextField,
   useTheme,
-} from "@aws-amplify/ui-react";
+} from '@aws-amplify/ui-react';
+import { CancelButton } from '../cancelButton';
+
 export default function MyForm(props) {
   const { onSubmit, onCancel, onValidate, onChange, overrides, ...rest } =
     props;
@@ -38,20 +39,21 @@ export default function MyForm(props) {
   };
   const validations = {
     name: [
+      { type: 'Required' },
       {
-        type: "GreaterThanChar",
+        type: 'GreaterThanChar',
         numValues: [3],
-        validationMessage: "The value must be at least 3 characters",
+        validationMessage: 'The value must be at least 3 characters',
       },
     ],
-    email: [{ type: "Required" }, { type: "Email" }],
-    birthday: [{ type: "Required" }],
+    email: [{ type: 'Required' }, { type: 'Email' }],
+    birthday: [{ type: 'Required' }],
     age: [
-      { type: "Required" },
+      { type: 'Required' },
       {
-        type: "GreaterThanNum",
+        type: 'GreaterThanNum',
         numValues: [18],
-        validationMessage: "The Age must be greater than 18",
+        validationMessage: 'The Age must be greater than 18',
       },
     ],
     gender: [],
@@ -67,7 +69,7 @@ export default function MyForm(props) {
   };
   return (
     <Grid
-      as='form'
+      as="form"
       rowGap={tokens.space.large.value}
       columnGap={tokens.space.large.value}
       padding={tokens.space.large.value}
@@ -102,10 +104,10 @@ export default function MyForm(props) {
         await onSubmit(modelFields);
       }}
       {...rest}
-      {...getOverrideProps(overrides, "MyForm")}
+      {...getOverrideProps(overrides, 'MyForm')}
     >
       <TextField
-        label='Name'
+        label="Name"
         isRequired={false}
         onChange={(e) => {
           let { value } = e.target;
@@ -121,17 +123,17 @@ export default function MyForm(props) {
             value = result?.name ?? value;
           }
           if (errors.name?.hasError) {
-            runValidationTasks("name", value);
+            runValidationTasks('name', value);
           }
           setName(value);
         }}
-        onBlur={() => runValidationTasks("name", name)}
+        onBlur={() => runValidationTasks('name', name)}
         errorMessage={errors.name?.errorMessage}
         hasError={errors.name?.hasError}
-        {...getOverrideProps(overrides, "name")}
+        {...getOverrideProps(overrides, 'name')}
       ></TextField>
       <TextField
-        label='Email'
+        label="Email"
         isRequired={true}
         onChange={(e) => {
           let { value } = e.target;
@@ -147,19 +149,19 @@ export default function MyForm(props) {
             value = result?.email ?? value;
           }
           if (errors.email?.hasError) {
-            runValidationTasks("email", value);
+            runValidationTasks('email', value);
           }
           setEmail(value);
         }}
-        onBlur={() => runValidationTasks("email", email)}
+        onBlur={() => runValidationTasks('email', email)}
         errorMessage={errors.email?.errorMessage}
         hasError={errors.email?.hasError}
-        {...getOverrideProps(overrides, "email")}
+        {...getOverrideProps(overrides, 'email')}
       ></TextField>
       <TextField
-        label='Birthday'
+        label="Birthday"
         isRequired={true}
-        type='datetime-local'
+        type="datetime-local"
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -174,20 +176,20 @@ export default function MyForm(props) {
             value = result?.birthday ?? value;
           }
           if (errors.birthday?.hasError) {
-            runValidationTasks("birthday", value);
+            runValidationTasks('birthday', value);
           }
           setBirthday(value);
         }}
-        onBlur={() => runValidationTasks("birthday", birthday)}
+        onBlur={() => runValidationTasks('birthday', birthday)}
         errorMessage={errors.birthday?.errorMessage}
         hasError={errors.birthday?.hasError}
-        {...getOverrideProps(overrides, "birthday")}
+        {...getOverrideProps(overrides, 'birthday')}
       ></TextField>
       <TextField
-        label='Age'
+        label="Age"
         isRequired={true}
-        type='number'
-        step='any'
+        type="number"
+        step="any"
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -202,18 +204,18 @@ export default function MyForm(props) {
             value = result?.age ?? value;
           }
           if (errors.age?.hasError) {
-            runValidationTasks("age", value);
+            runValidationTasks('age', value);
           }
           setAge(value);
         }}
-        onBlur={() => runValidationTasks("age", age)}
+        onBlur={() => runValidationTasks('age', age)}
         errorMessage={errors.age?.errorMessage}
         hasError={errors.age?.hasError}
-        {...getOverrideProps(overrides, "age")}
+        {...getOverrideProps(overrides, 'age')}
       ></TextField>
       <RadioGroupField
-        label='Gender'
-        name='fieldName'
+        label="Gender"
+        name="fieldName"
         isRequired={false}
         onChange={(e) => {
           let { value } = e.target;
@@ -229,57 +231,54 @@ export default function MyForm(props) {
             value = result?.gender ?? value;
           }
           if (errors.gender?.hasError) {
-            runValidationTasks("gender", value);
+            runValidationTasks('gender', value);
           }
           setGender(value);
         }}
-        onBlur={() => runValidationTasks("gender", gender)}
+        onBlur={() => runValidationTasks('gender', gender)}
         errorMessage={errors.gender?.errorMessage}
         hasError={errors.gender?.hasError}
-        {...getOverrideProps(overrides, "gender")}
+        {...getOverrideProps(overrides, 'gender')}
       >
-        <Radio
-          children='Male'
-          value='Male'
-          {...getOverrideProps(overrides, "genderRadio0")}
-        ></Radio>
-        <Radio
-          children='Female'
-          value='Female'
-          {...getOverrideProps(overrides, "genderRadio1")}
-        ></Radio>
-        <Radio
-          children='Other'
-          value='Other'
-          {...getOverrideProps(overrides, "genderRadio2")}
-        ></Radio>
+        <Radio value="Male" {...getOverrideProps(overrides, 'genderRadio0')}>
+          Male
+        </Radio>
+        <Radio value="Female" {...getOverrideProps(overrides, 'genderRadio1')}>
+          Female
+        </Radio>
+        <Radio value="Other" {...getOverrideProps(overrides, 'genderRadio2')}>
+          Other
+        </Radio>
       </RadioGroupField>
       <Flex
-        justifyContent='space-between'
-        {...getOverrideProps(overrides, "CTAFlex")}
+        justifyContent="space-between"
+        {...getOverrideProps(overrides, 'CTAFlex')}
       >
         <Button
-          children='Clear'
-          type='reset'
+          type="reset"
           onClick={resetStateValues}
-          {...getOverrideProps(overrides, "ClearButton")}
-        ></Button>
-        <Flex {...getOverrideProps(overrides, "RightAlignCTASubFlex")}>
-          <Button
-            children='Cancel'
-            type='button'
+          {...getOverrideProps(overrides, 'ClearButton')}
+        >
+          Clear
+        </Button>
+        <Flex {...getOverrideProps(overrides, 'RightAlignCTASubFlex')}>
+          <CancelButton
+            type="button"
             onClick={() => {
               onCancel && onCancel();
             }}
-            {...getOverrideProps(overrides, "CancelButton")}
-          ></Button>
+            {...getOverrideProps(overrides, 'CancelButton')}
+          >
+            Cancel
+          </CancelButton>
           <Button
-            children='Submit'
-            type='submit'
-            variation='primary'
+            type="submit"
+            variation="primary"
             isDisabled={Object.values(errors).some((e) => e?.hasError)}
-            {...getOverrideProps(overrides, "SubmitButton")}
-          ></Button>
+            {...getOverrideProps(overrides, 'SubmitButton')}
+          >
+            Submit
+          </Button>
         </Flex>
       </Flex>
     </Grid>

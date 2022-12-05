@@ -1,4 +1,3 @@
-/* eslint-disable */
 export const validateField = (value, validations) => {
     for (const validation of validations) {
         if (value === undefined || value === "") {
