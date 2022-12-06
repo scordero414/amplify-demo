@@ -6,7 +6,7 @@ const baseTheme = createTheme({
     fonts: {
       default: {
         variable:
-          "'ZenDots', 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif",
+          "'AvenirBold', 'AvenirRegular', 'ZenDots', 'Nunito Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif",
       },
     },
   },
@@ -22,7 +22,7 @@ export const theme = createTheme(
           ...baseTheme.tokens.components.fileuploader,
           dropzone: {
             ...baseTheme.tokens.components.fileuploader.dropzone,
-            backgroundColor: 'red',
+            backgroundColor: baseTheme.tokens.colors.background.tertiary,
           },
         },
       },

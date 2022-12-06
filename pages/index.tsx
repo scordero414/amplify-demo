@@ -31,30 +31,32 @@ const GridResponsiveExample = () => {
   return (
     <Grid
       templateColumns={{ base: '1fr', large: 'repeat(2, 1fr)' }}
+      backgroundColor={tokens.colors.background.primary}
       // templateRows={{ base: "0.5fr 1fr 1fr 1fr", large: "repeat(4, 1fr)" }}
       // height='100vh'
-      gap={10}
+      // gap={10}
     >
       <View
         columnSpan={{ base: 1, large: 2 }}
-        backgroundColor={tokens.colors.brand.primary[90]}
+        backgroundColor={tokens.colors.background.primary}
       >
-        Header
+        <Text fontFamily='Nunito Sans' fontSize={48} paddingLeft={50} paddingBottom={30} paddingTop={30}>Fullstack Solvers</Text>
       </View>
       <View
         rowSpan={{ base: 1, large: 3 }}
-        backgroundColor={tokens.colors.brand.primary[60]}
+        backgroundColor={tokens.colors.background.primary}
+        style={{paddingRight: '20px', paddingLeft: '20px', display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center'}}
       >
-        Nav
         <FileUploader acceptedFileTypes={['image/*']} accessLevel="public" />
       </View>
       <View
-        backgroundColor={tokens.colors.brand.secondary[10]}
+        backgroundColor={tokens.colors.background.secondary}
         rowSpan={{ base: 1, large: 2 }}
+        style={{ marginRight: '20px'}}
       >
         <MyForm onSubmit={(fields: any) => console.log(fields)} />
       </View>
-      <View backgroundColor={tokens.colors.brand.primary[40]}>Footer</View>
+      <View backgroundColor={tokens.colors.background.primary}>Footer</View>
     </Grid>
   );
 };
