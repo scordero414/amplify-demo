@@ -29,11 +29,11 @@ const GridResponsiveExample = () => {
   // const classes = useStyles();
 
   return (
-    <Grid
-      templateColumns={{ base: '1fr', large: 'repeat(2, 1fr)' }}
-      backgroundColor={tokens.colors.background.primary}
-      // templateRows={{ base: "0.5fr 1fr 1fr 1fr", large: "repeat(4, 1fr)" }}
-      // height='100vh'
+      <Grid
+        templateColumns={{ base: '1fr', large: 'repeat(2, 1fr)' }}
+        backgroundColor={tokens.colors.background.primary}
+        // templateRows={{ base: "0.5fr 1fr 1fr 1fr", large: "repeat(4, 1fr)" }}
+        // height='100vh'
       // gap={10}
     >
       <View

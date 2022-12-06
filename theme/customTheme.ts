@@ -2,14 +2,6 @@ import { createTheme, defaultDarkModeOverride } from '@aws-amplify/ui-react';
 
 const baseTheme = createTheme({
   name: 'my-base-theme',
-  tokens: {
-    fonts: {
-      default: {
-        variable:
-          "'AvenirBold', 'AvenirRegular', 'ZenDots', 'Nunito Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif",
-      },
-    },
-  },
   overrides: [defaultDarkModeOverride],
 });
 

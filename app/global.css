@@ -2,8 +2,16 @@ html,
 body {
   padding: 0;
   margin: 0;
+  height: 100%;
 }
-@font-face {
+
+body > *,
+.layoutDiv,
+.layoutDiv > *:last-child {
+  height: 100%;
+}
+
+/* @font-face {
   font-family: 'AvenirBold';
   src: url('/fonts/AvenirNextLTPro-Bold.otf');
   format: ('otf');
@@ -22,4 +30,4 @@ body {
   src: url('/fonts/ZenDots-Regular.ttf');
   format: ('ttf');
   font-display: swap;
-}
+} */
